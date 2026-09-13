@@ -1,6 +1,7 @@
 import React, { use, useState, type Dispatch, type SetStateAction } from 'react';
 import type { ILanguageTypes } from '../Types/languagetypes';
 import LanguageCard from './languages/LanguageCard';
+import { toast } from 'react-toastify';
 
 interface LanguageProps {
     usersPromise: Promise<ILanguageTypes[]>;
@@ -18,16 +19,18 @@ const Languages = ({usersPromise,stack,setstack }: LanguageProps) => {
     
     const handleAddtoStack = (language:ILanguageTypes) => {
         // console.log("Clicked add t cart",language);
-        setstack([...stack,language])
+        setstack([...stack,language]);
+        toast.success(`${language.name} added to the stack`)
+
     }
     return <div className='flex m-30 gap-5'>
-            <div className='grid grid-cols-3 gap-4 width-[75%]'>{ 
+            <div className='grid grid-cols-3 gap-4 width-[70%]'>{ 
             // map third bradket enclosed
 
                 languages.map((language:ILanguageTypes,ind:number) => {
 
             return (
-                <div className="card bg-base-70 w-70 shadow-sm">
+                <div className="card bg-base-70 w-75 shadow-sm">
                     <div className='flex justify-between'>
                           <div className='h-16 w-16 ml-5 mt-3'>
                         <img
@@ -43,8 +46,8 @@ const Languages = ({usersPromise,stack,setstack }: LanguageProps) => {
                         <p className='text-[#64748B]'>{language.description}</p>
                         <div className="card-actions">
                             <div className='flex justify-between container'>
-                                <div><p className=' pl-2 rounded-2xl bg-[#F1F5F9]'>{language.category}</p></div>
-                                <p className=' pl-5  text-[#64748B]'>{language.difficulty}</p>
+                                <div><p className='  rounded-2xl bg-[#F1F5F9]'>{language.category}</p></div>
+                                <p className=' pl-4  text-[#64748B]'>{language.difficulty}</p>
                                 <p className=''>⭐ {language.rating}</p>
                             </div>
                         <button onClick={()=>handleAddtoStack(language)} className="w-full bg-black rounded-[10px] btn btn-primary">Add to Stack</button>
