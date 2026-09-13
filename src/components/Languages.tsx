@@ -65,7 +65,7 @@ const Languages = ({usersPromise,stack,setstack }: LanguageProps) => {
 
                     <div className="card-body">
                         <h2 className="card-title font-bold text-[23px]">Your Stack</h2>
-                        <p>{stack.length} technology selected</p>
+                        <p className='text-[#94A3B8]'>{stack.length} technology selected</p>
                         <div className='card-actions justify-center'>
                     <button className="btn btn-primary w-full rounded-[10px] text-[#D82C20] border-[#ED8C85] bg-white">Remove All</button>
                         </div>

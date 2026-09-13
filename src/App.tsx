@@ -28,7 +28,7 @@ function App() {
   <div className="m-8"></div>
     <Explore></Explore>
 
-    <Suspense fallback={<h3>Loading.......</h3>}>
+    <Suspense fallback={<div>Loading Languages....</div>}>
         <Languages usersPromise={usersPromise} stack={stack} setstack={setstack}></Languages>
     </Suspense>
 
