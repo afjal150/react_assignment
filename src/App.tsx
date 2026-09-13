@@ -1,4 +1,4 @@
-import { Suspense } from "react"
+import { Suspense, useState } from "react"
 import Banner from "./components/Banner"
 import Explore from "./components/Explore"
 import Footer from "./components/Footer"
@@ -13,9 +13,14 @@ const usersFetch = async(): Promise<ILanguageTypes[]> =>   {
   const data = await response.json();
   return data;
 }
+  
 
 function App() {
   const usersPromise = usersFetch();
+
+      const [stack, setstack] = useState<ILanguageTypes[]>([]);
+
+
  return (
   <>
   <Nav></Nav>
@@ -24,7 +29,7 @@ function App() {
     <Explore></Explore>
 
     <Suspense fallback={<h3>Loading.......</h3>}>
-        <Languages usersPromise={usersPromise}></Languages>
+        <Languages usersPromise={usersPromise} stack={stack} setstack={setstack}></Languages>
     </Suspense>
 
 

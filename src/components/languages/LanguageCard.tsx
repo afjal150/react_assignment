@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { ILanguageTypes } from '../../Types/languagetypes';
 
+
+
+
 const LanguageCard = ({language}:{language: ILanguageTypes}) => {
+
+    const [stack, setstack] = useState<ILanguageTypes[]>([]);
+
+    const handleAddtoStack = (language:ILanguageTypes) => {
+        // console.log("Clicked add t cart",language);
+        setstack([...stack,language])
+    }
+    console.log(stack,"stack");
+
     return (
         <div className="card bg-base-80 w-86 shadow-sm">
                     <div className='flex justify-between'>
@@ -23,7 +35,7 @@ const LanguageCard = ({language}:{language: ILanguageTypes}) => {
                                 <p className=' pl-5  text-[#64748B]'>{language.difficulty}</p>
                                 <p className=''>⭐ {language.rating}</p>
                             </div>
-                        <button className="w-full bg-black rounded-[10px] btn btn-primary">Add to Stack</button>
+                        <button onClick={()=>handleAddtoStack(language)} className="w-full bg-black rounded-[10px] btn btn-primary">Add to Stack</button>
                         </div>
                     </div>
                     </div>
